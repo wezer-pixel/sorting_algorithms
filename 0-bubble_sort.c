@@ -1,49 +1,46 @@
 #include "sort.h"
 
 /**
- * swap - swaps two numbers
- * @a: first number
- * @b: second number
- *
- * Return: void
+ * swap_ints - function to swap two numbers
+ * @a: The first number
+ * @b: The second num
  */
-
-void swap(int *a, int *b)
+void swap_ints(int *a, int *b)
 {
-	int temp = *a;
+	int temp;
+
+	temp = *a;
 	*a = *b;
 	*b = temp;
 }
 
 /**
- * bubble_sort - algorithm to sort numbers in ascending order
- * @array: array of int to be sorted
- * @size: size of the array
+ * bubble_sort - Sort numbers in ascending order.
+ * @array: array to sort.
+ * @size: size of the array.
  *
- * Return: a sorted list
+ * Description: Print the array after each swap.
  */
-
 void bubble_sort(int *array, size_t size)
 {
-	int swapped;
-	size_t i, j, k;
+	size_t i, len = size;
+	bool swapped = false;
 
-	for (i = 0; i < size - 1; i++)
+	if (array == NULL || size < 2)
+		return;
+
+	while (swapped == false)
 	{
-		for (j = 0; j < size - i - 1; j++)
+		swapped = true;
+		for (i = 0; i < len - 1; i++)
 		{
-			if (array[j], array[j + 1])
+			if (array[i] > array[i + 1])
 			{
-				swap(&array[j], &array[j + 1]);
-				swapped = 1;
+				swap_ints(array + i, array + i + 1);
+				print_array(array, size);
+				swapped = false;
 			}
 		}
-		if (swapped == 0)
-			break;
-		printf("%zu ", i + 1);
-
-		for (k = 0; k < size; k++)
-			printf("%d ", array[k]);
-		printf("\n");
+		len--;
 	}
 }
