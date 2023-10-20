@@ -1,11 +1,31 @@
 #include "sort.h"
 
+void swap_ints(int *a, int *b);
+int lomuto_partition(int *array, size_t size, int left, int right);
+void lomuto_sort(int *array, size_t size, int left, int right);
+void quick_sort(int *array, size_t size);
+
 /**
- * lomuto_partition - order subset of array in lomuto partition scheme
- * @array: array
- * @size: size
- * @left: start index
- * @right: end index
+ * swap_ints - Swap two integers in an array.
+ * @a: first int
+ * @b: second int
+ */
+void swap_ints(int *a, int *b)
+{
+	int tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+/**
+ * lomuto_partition - Order a subset of an array of integers according to
+ *                    the lomuto partition scheme (last element as pivot).
+ * @array:  array
+ * @size: size of the array
+ * @left: The starting index of the subset to order.
+ * @right: The ending index of the subset to order.
  *
  * Return: The final partition index.
  */
@@ -38,11 +58,12 @@ int lomuto_partition(int *array, size_t size, int left, int right)
 
 /**
  * lomuto_sort - quicksort algorithm through recursion.
- * @array: array
- * @size: size of array
- * @left: start index
- * @right: end index
- * Description: Lomuto partition scheme.
+ * @array: An array of integers to sort.
+ * @size: size of the array.
+ * @left: starting index of the array partition to order.
+ * @right: end index of the array partition to order.
+
+ * Description: Uses the Lomuto partition scheme.
  */
 void lomuto_sort(int *array, size_t size, int left, int right)
 {
@@ -57,11 +78,13 @@ void lomuto_sort(int *array, size_t size, int left, int right)
 }
 
 /**
- * quick_sort - sort array in ascending order
- * @array: array
- * @size: size of array.
+ * quick_sort - Sort an array of integers in ascending
+ *              order using the quicksort algorithm.
+ * @array: Array
+ * @size: Size of the array.
  *
- * Description: Lomuto partition scheme
+ * Description: Uses the Lomuto partition scheme. Prints
+ *              the array after each swap of two elements.
  */
 void quick_sort(int *array, size_t size)
 {

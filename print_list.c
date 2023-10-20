@@ -1,10 +1,10 @@
+#include <stdio.h>
 #include "sort.h"
 
 /**
- * print_list - prints a list
+ * print_list - Prints a list of integers
  *
  * @list: The list to be printed
- * Description: print a list of integers
  */
 void print_list(const listint_t *list)
 {

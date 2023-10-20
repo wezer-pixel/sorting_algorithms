@@ -1,15 +1,35 @@
 #include "sort.h"
 
+void swap_ints(int *a, int *b);
+void bitonic_merge(int *array, size_t size, size_t start, size_t seq,
+		char flow);
+void bitonic_seq(int *array, size_t size, size_t start, size_t seq, char flow);
+void bitonic_sort(int *array, size_t size);
+
 /**
- * bitonic_merge - sort a bitonic sequence inside an array of integers.
- * @array: array
- * @size: size of the array.
- * @start: starting index of the sequence in array to sort.
- * @seq: size of the sequence to sort.
+ * swap_ints - Swap two integers in an array.
+ * @a: int1
+ * @b: int2
+ */
+void swap_ints(int *a, int *b)
+{
+	int tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+/**
+ * bitonic_merge - Sort a bitonic sequence inside an array of integers.
+ * @array: Array
+ * @size: size of array.
+ * @start: start index of sequence in array to sort.
+ * @seq: size of sequence to sort.
  * @flow: direction to sort in.
  */
 void bitonic_merge(int *array, size_t size, size_t start, size_t seq,
-char flow)
+		char flow)
 {
 	size_t i, jump = seq / 2;
 
@@ -17,7 +37,8 @@ char flow)
 	{
 		for (i = start; i < start + jump; i++)
 		{
-			if ((flow == UP && array[i] > array[i + jump]) || (flow == DOWN && array[i] < array[i + jump]))
+			if ((flow == UP && array[i] > array[i + jump]) ||
+			    (flow == DOWN && array[i] < array[i + jump]))
 				swap_ints(array + i, array + i + jump);
 		}
 		bitonic_merge(array, size, start, jump, flow);
@@ -26,8 +47,8 @@ char flow)
 }
 
 /**
- * bitonic_seq - Convert array to a bitonic sequence.
- * @array: array
+ * bitonic_seq - Convert an array of integers into a bitonic sequence.
+ * @array: Array
  * @size: size of the array.
  * @start: starting index of a block of the building bitonic sequence.
  * @seq: size of a block of the building bitonic sequence.
@@ -53,11 +74,13 @@ void bitonic_seq(int *array, size_t size, size_t start, size_t seq, char flow)
 }
 
 /**
- * bitonic_sort - Sort array in ascending order using the bitonic sort algorithm.
- * @array: array
+ * bitonic_sort - Sort an array of integers in ascending
+ *                order using the bitonic sort algorithm.
+ * @array: array of integers.
  * @size: size of the array.
  *
- * Description: Prints the array after each swap
+ * Description: Prints the array after each swap. Only works for
+ * size = 2^k where k >= 0 (ie. size equal to powers of 2).
  */
 void bitonic_sort(int *array, size_t size)
 {

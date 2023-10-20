@@ -1,9 +1,27 @@
 #include "sort.h"
 
+void swap_ints(int *a, int *b);
+void max_heapify(int *array, size_t size, size_t base, size_t root);
+void heap_sort(int *array, size_t size);
+
 /**
- * max_heapify - turn binary tree to binary heap.
- * @array: int array rep a binary tree.
- * @size: sizze of array/tree.
+ * swap_ints - Swap two integers in an array.
+ * @a: int 1
+ * @b: int 2
+ */
+void swap_ints(int *a, int *b)
+{
+	int tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+/**
+ * max_heapify - Turn a binary tree into a complete binary heap.
+ * @array: An array of integers representing a binary tree.
+ * @size: size of the array/tree.
  * @base: index of the base row of the tree.
  * @root: root node of the binary tree.
  */
@@ -29,11 +47,13 @@ void max_heapify(int *array, size_t size, size_t base, size_t root)
 }
 
 /**
- * heap_sort - sort array in ascending order using heap sort algorithm.
- * @array: array
- * @size: size
+ * heap_sort - Sort an array of integers in ascending
+ *             order using the heap sort algorithm.
+ * @array: int array 
+ * @size: size of the array.
  *
- * Description: prints the array after each swap.
+ * Description: Implement sift-down heap sort
+ * algorithm. Prints the array after each swap.
  */
 void heap_sort(int *array, size_t size)
 {

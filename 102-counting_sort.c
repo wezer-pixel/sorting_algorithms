@@ -1,11 +1,11 @@
 #include "sort.h"
 
 /**
- * get_max - get max value in an array
+ * get_max - Get the max value in array of integers.
  * @array: array
- * @size: size
+ * @size: size of the array.
  *
- * Return: max int value in array
+ * Return: max int in array.
  */
 int get_max(int *array, int size)
 {
@@ -16,15 +16,17 @@ int get_max(int *array, int size)
 		if (array[i] > max)
 			max = array[i];
 	}
+
 	return (max);
 }
 
 /**
- * counting_sort - sort array in ascending order use counting sort algorithm.
- * @array: array
- * @size: size
+ * counting_sort - Sort an array of integers in ascending order
+ *                 using the counting sort algorithm.
+ * @array: Array
+ * @size: size of the array.
  *
- * Description: print array
+ * Description: Prints the counting array after setting it up.
  */
 void counting_sort(int *array, size_t size)
 {
@@ -38,7 +40,6 @@ void counting_sort(int *array, size_t size)
 		return;
 	max = get_max(array, size);
 	count = malloc(sizeof(int) * (max + 1));
-
 	if (count == NULL)
 	{
 		free(sorted);
